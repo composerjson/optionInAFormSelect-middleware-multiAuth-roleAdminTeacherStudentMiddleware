@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SelectController;
 use Illuminate\Support\Facades\Route;
 /*
@@ -16,9 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('/select-form', SelectController::class, ['names'=> 'select']);
+// Route::resource('/select', SelectController::class);
 // Route::resource('/select-form', SelectController::class);
 
 // select.edit
 
 // Route::resource('/select.edit', SelectController::class, ['names'=> 'select']);
+
+
+Route::resource('/categories', CategoryController::class);

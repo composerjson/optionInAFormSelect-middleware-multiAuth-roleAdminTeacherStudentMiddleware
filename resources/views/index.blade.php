@@ -10,7 +10,7 @@
 
 <body>
     <h1>
-        <a href="{{ route('select.create') }}">Store</a>
+        {{-- <a href="{{ route('select.create') }}">Store</a> --}}
     </h1>
 
     <table>
@@ -67,9 +67,9 @@
 
 
                     
-                    <form action="{{ route('select.destroy', [$value->id]) }}" >
-                        @method('delete')
+                    <form action="{{ route('select-form.destroy',$value->id) }}" method="POST">
                         @csrf
+                        @method("DELETE")
                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     </form>
 

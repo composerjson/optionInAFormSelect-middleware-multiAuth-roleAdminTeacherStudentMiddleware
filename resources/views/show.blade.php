@@ -41,7 +41,7 @@
 </head>
 <body>
     
-    <form action="{{route('select.store')}}" method="POST">
+    <form action="{{route('select-form.store')}}" method="POST">
         @csrf
         {{-- @method('post') --}}
         <label for="cars">Choose a car:</label>

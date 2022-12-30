@@ -26,7 +26,6 @@ class SelectController extends Controller
     public function create()
     {
         return view('show');
-
     }
 
     /**
@@ -39,7 +38,7 @@ class SelectController extends Controller
     {
         // return $request;
         $post = new Select();
-        $post->cars= $request->cars;
+        $post->cars = $request->cars;
         $post->save();
         return redirect()->route('select.index');
     }
@@ -63,7 +62,6 @@ class SelectController extends Controller
      */
     public function edit(Select $select)
     {
-
     }
 
     /**
@@ -86,19 +84,7 @@ class SelectController extends Controller
      */
     public function destroy(Select $select)
     {
-        // dd($select);
-        // $user = Select::findOrFail($select);
-        // $user->delete();
-    
-        // return redirect('/admin/users'); 
-
-        // $post = Select::find($select);
-        // $post->delete();
-        // return redirect()->back();
-
-        $select->delete();
-    //    return $select;
+        Select::findOrFail($select->id)->delete();
         return redirect()->back();
-
     }
 }
