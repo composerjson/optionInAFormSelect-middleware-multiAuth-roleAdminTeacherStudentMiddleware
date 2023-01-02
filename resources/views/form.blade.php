@@ -10,14 +10,15 @@
 <body>
     <div class="container">
         <div class="row">
-            @guest
-            <h1>you should login</h1>
+
+        @guest
+            <h1>guest you should login</h1>
         @endguest
 
         @auth
-        <h5>you logined In thanks you</h5>
+            <h5>auth you logined In thanks you</h5>
         @endauth
-        
+
         </div>
     </div>
 </body>

@@ -23,19 +23,23 @@ class LoginUserRoute
         // if(Auth::user()->role !='1'){
         //     return redirect('/');
         // }
+
+
         // $path = $request->path();
         // $ip = $request->ip();
         // $agentip = $request->userAgent();
         // $user_id = Auth::id();
 
+
             $data=[
-                'route' => $request->path(),
+                // 'route' => $request->path(),
+                'route' => $request->fullUrl(),
                 'ip' => $request->ip(),
                 'agent' => $request->userAgent(),
                 'user_id' => Auth::id()
             ];
         Routelogger::create($data);
-        dd($data);
+        // dd($data);
         return $next($request);
     }
 }
