@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\Routelogger;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
@@ -35,9 +35,7 @@ class LoginUserRoute
                 'user_id' => Auth::id()
             ];
         Routelogger::create($data);
-
-
-        // dd($data);
+        dd($data);
         return $next($request);
     }
 }
