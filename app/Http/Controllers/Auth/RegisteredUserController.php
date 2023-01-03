@@ -37,18 +37,38 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'role'  => ['required'],
         ]);
+        if($request->role == '1' || $request ->role == '3'){
+            return redirect('/');
+        }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => $request->role,
+
         ]);
 
         event(new Registered($user));
-
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+
+        $r = Auth::user()->role;
+        if($r== '1'){
+            return redirect(RouteServiceProvider::HOME);
+        }
+        else if($r == '2'){
+        return redirect(RouteServiceProvider::TEACHER);
+        }
+        else if($r == '3'){
+            return redirect(RouteServiceProvider::STUDENT);
+        }else{
+            return redirect('/');
+        }
+
+
+        // return redirect(RouteServiceProvider::HOME);
     }
 }

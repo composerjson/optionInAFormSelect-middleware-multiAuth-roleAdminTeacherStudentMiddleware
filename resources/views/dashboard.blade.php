@@ -10,6 +10,17 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
+
+                    @if (Auth::user()->role == '1')
+                    <br>
+                    <a href="">admin </a>
+                    @endif
+                    
+                    <br>
+                    <a href="">teacher</a>
+                    <br>
+                    <a href="">student</a>
+
                 </div>
             </div>
         </div>

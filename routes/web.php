@@ -33,4 +33,29 @@ Route::middleware('routelog')->group(function () {
 Route::get('/form', [Controller::class, 'formIndex'])->middleware(['routelog']);
 
 
+
+Route::get('/teacher', function () {
+    return view('teacher');
+})->middleware(['teacher', 'auth','admin']);
+
+Route::get('/student', function () {
+    return view('student');
+})->middleware(['student', 'auth']);
+
+
+
+
+
+Route::middleware('routelog')->group(function () {
+
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('/profile', 'edit')->name('profile.edit');
+
+    });
+});
+
+
+
+
+
 require __DIR__.'/auth.php';
