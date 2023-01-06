@@ -23,9 +23,9 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $d = Department::paginate(5);
+        $id = Department::paginate(5);
         // dd($dep);
-        return view('welcome',['d'=>$d]);
+        return view('welcome',compact('id'));
     }
 
     /**
@@ -65,9 +65,9 @@ class DepartmentController extends Controller
      */
     public function show(Department $department)
     {
-        //
-        dd($department);
-        // echo $department->name;
+        $id = Department::paginate(5);
+        // dd($dep);
+        return view('welcome',compact('id'));
     }
 
     /**

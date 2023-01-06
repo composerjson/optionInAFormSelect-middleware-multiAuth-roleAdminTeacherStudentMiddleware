@@ -19,13 +19,13 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
-        // $students = Student::all();
-        // compact('student');
-        // ['students' => $student];
-        // dd($students);
+    
+        
+        // foreach($d as $user){
+            // echo $user->name;
+        // }
 
-        echo " index";
+        return view('student');
     }
 
     /**

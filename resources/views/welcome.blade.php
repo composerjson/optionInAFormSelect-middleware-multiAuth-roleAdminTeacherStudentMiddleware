@@ -31,7 +31,7 @@
         @endforeach
     </div>
      
-    {{ $d->links() }}
+    {{-- {{ $id->links() }} --}}
     
     
 
