@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('/select-form', SelectController::class, ['names'=> 'select']);
+Route::resource('/select', SelectController::class, ['names'=> 'select']);
 // Route::resource('/select-form', SelectController::class);
 
 // select.edit

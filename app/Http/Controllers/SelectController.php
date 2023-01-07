@@ -14,8 +14,10 @@ class SelectController extends Controller
      */
     public function index()
     {
-        $selects = Select::all();
-        return view('index', compact('selects'));
+        // $selects = Select::all();
+        // return view('index', compact('selects'));
+        return view('index');
+
     }
 
     /**
@@ -61,9 +63,12 @@ class SelectController extends Controller
      * @param  \App\Models\Select  $select
      * @return \Illuminate\Http\Response
      */
-    public function edit(Select $select)
+    public function edit($id)
     {
+        // $data = Select::find($id);
+        $data = Select::find($id);
 
+        return view('edit', compact('data'));
     }
 
     /**
@@ -75,7 +80,10 @@ class SelectController extends Controller
      */
     public function update(Request $request, Select $select)
     {
-        //
+        // $students = Select::find($id);
+        // $students->name = $request->input('cars');
+        // $students->save();
+
     }
 
     /**
@@ -96,9 +104,17 @@ class SelectController extends Controller
         // $post->delete();
         // return redirect()->back();
 
-        $select->delete();
-    //    return $select;
-        return redirect()->back();
+    //     $select->delete();
+    // //    return $select;
+    //     return redirect()->back();
+
+        if($select->delete()){
+             return redirect()->back();
+        }
+        echo "oop not deleted";
+
+        // $select->delete() ? return redirect()->back() : "echo 'oops not deleted'";
+
 
     }
 }
