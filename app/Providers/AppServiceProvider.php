@@ -27,9 +27,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         // way 1
-        $selects = Select::get();
-
-        View::share('selects',$selects); 
+        // $selects = Select::get();
+        // View::share('selects',$selects); 
 
         // way 2
         // View::share('selects', Select::get()); 

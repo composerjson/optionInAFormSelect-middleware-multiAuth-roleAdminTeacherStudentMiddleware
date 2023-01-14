@@ -14,10 +14,8 @@ class SelectController extends Controller
      */
     public function index()
     {
-        // $selects = Select::all();
-        // return view('index', compact('selects'));
-        return view('index');
-
+        $selects = Select::latest()->get();
+        return view('index', compact('selects'));
     }
 
     /**
@@ -28,7 +26,6 @@ class SelectController extends Controller
     public function create()
     {
         return view('show');
-
     }
 
     /**
@@ -41,7 +38,7 @@ class SelectController extends Controller
     {
         // return $request;
         $post = new Select();
-        $post->cars= $request->cars;
+        $post->cars = $request->cars;
         $post->save();
         return redirect()->route('select.index');
     }
@@ -63,12 +60,20 @@ class SelectController extends Controller
      * @param  \App\Models\Select  $select
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Select $select)
     {
+        // // $data = Select::find($id);
         // $data = Select::find($id);
-        $data = Select::find($id);
 
-        return view('edit', compact('data'));
+        // return view('edit', compact('data'));
+
+        $idWiseValue = $select;
+
+        // return view('edit', compact('select'));
+        $selects = Select::all();
+
+        // return view('edit', compact('selects', 'idWiseValue'));
+        return view('edit', compact('selects','idWiseValue'));
     }
 
     /**
@@ -78,11 +83,16 @@ class SelectController extends Controller
      * @param  \App\Models\Select  $select
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Select $select)
+    public function update(Select $select, Request $request)
     {
+        // // Request $request, Select $select
         // $students = Select::find($id);
-        // $students->name = $request->input('cars');
+        // $select->cars = $select->cars;
         // $students->save();
+
+        // return $request->all();
+        $select->update($request->all());
+        return redirect()->route('select.index');
 
     }
 
@@ -97,19 +107,19 @@ class SelectController extends Controller
         // dd($select);
         // $user = Select::findOrFail($select);
         // $user->delete();
-    
+
         // return redirect('/admin/users'); 
 
         // $post = Select::find($select);
         // $post->delete();
         // return redirect()->back();
 
-    //     $select->delete();
-    // //    return $select;
-    //     return redirect()->back();
+        //     $select->delete();
+        //     return $select;
+        //     return redirect()->back();
 
-        if($select->delete()){
-             return redirect()->back();
+        if ($select->delete()) {
+            return redirect()->back();
         }
         echo "oop not deleted";
 
